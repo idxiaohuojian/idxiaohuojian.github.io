@@ -71,8 +71,18 @@ def url_of(path: str) -> str:
 def main() -> None:
     today = today_str()
     print(f"Today (Asia/Shanghai): {today}")
+    event = os.environ.get("GITHUB_EVENT_NAME", "push")
 
     files = list_changed_posts()
+    # Fallback for root commit / first push: if diff empty, scan all posts for today
+    if not files and event == "push":
+        try:
+            result = subprocess.run(["git", "ls-files", "_posts/*.md"], capture_output=True, text=True, check=True)
+            files = [f for f in result.stdout.strip().split("\n") if f]
+            if files:
+                print("Fallback to all tracked posts for today filter (root commit / first push)")
+        except subprocess.CalledProcessError:
+            pass
     print(f"Changed post files: {len(files)}")
 
     urls = []
