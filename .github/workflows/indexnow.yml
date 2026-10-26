@@ -1,0 +1,40 @@
+name: IndexNow URL Submission
+
+on:
+  push:
+    paths:
+      - "_posts/**"
+      - "*.md"
+  workflow_dispatch:
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Build URL list (today only)
+        id: urls
+        env:
+          BASE_URL: https://idxiaohuojian.github.io
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python3 build_urls.py
+          URL_COUNT=$(python3 -c "import json; print(len(json.load(open('/tmp/url_list.json'))))")
+          echo "urls=$URL_COUNT" >> "$GITHUB_OUTPUT"
+          echo "$URL_COUNT URLs ready"
+
+      - name: Submit URLs to IndexNow
+        env:
+          INDEXNOW_KEY: h6Dbj7YTu4rRG6xjPcHaVAGxX7d76aKJ
+          BASE_URL: https://idxiaohuojian.github.io
+        run: |
+          URL_COUNT=$(python3 -c "import json; print(len(json.load(open('/tmp/url_list.json'))))")
+          if [ "$URL_COUNT" -eq 0 ]; then
+            echo "No URLs to submit."
+            exit 0
+          fi
+          echo "Submitting $URL_COUNT URLs..."
+          python3 submit_indexnow.py

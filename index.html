@@ -1,0 +1,24 @@
+---
+layout: default
+title: 首页
+description: 小火箭（Shadowrocket）配置教程、账号选购与使用攻略的原创资讯站。
+---
+
+<section class="hero">
+  <h1>🚀 i小火箭 · Shadowrocket 使用与账号攻略</h1>
+  <p class="lead">{{ site.description }}</p>
+  <a href="{{ site.url }}/articles/" class="btn">浏览文章</a>
+</section>
+
+<section class="posts">
+  <h2>最新文章</h2>
+  <div class="post-grid">
+    {% for post in site.posts | sort: "date" | reverse | slice: 0, 6 %}
+      <article class="post-card">
+        <time>{{ post.date | date: '%Y-%m-%d' }}</time>
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <p>{{ post.description }}</p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
