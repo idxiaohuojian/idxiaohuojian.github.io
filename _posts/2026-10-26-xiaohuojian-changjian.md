@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: 小火箭配置基础教程：Shadowrocket 初次使用
 permalink: /articles/xiaohuojian-changjian/
 description: 小火箭（Shadowrocket）初次安装与基础配置的完整步骤，适合新手快速上手。
