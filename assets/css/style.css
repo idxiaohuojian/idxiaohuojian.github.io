@@ -534,3 +534,32 @@ ul, ol { padding-left: 1.2em; }
   .shop-card h3 { font-size: 14px; }
   .shop-cta { font-size: 12px; }
 }
+
+
+/* ---------- 热门教程（首页专题栏目） ---------- */
+.hot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.hot-card {
+  position: relative; display: flex; flex-direction: column; gap: 10px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 22px 20px 20px; transition: transform .18s, box-shadow .18s;
+  overflow: hidden;
+}
+.hot-card::before {
+  content: ""; position: absolute; inset: 0 0 auto; height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--orange));
+}
+.hot-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px #0b3d4215; }
+.hot-kicker {
+  align-self: flex-start; font-size: 9px; font-weight: 700; letter-spacing: 1.2px;
+  color: var(--cyan); background: #e4f5ef; padding: 3px 9px; border-radius: 99px;
+}
+.hot-card h3 { font-size: 16px; font-weight: 750; line-height: 1.45; color: var(--ink); }
+.hot-card h3 a:hover { color: var(--cyan); }
+.hot-card p { font-size: 12px; line-height: 1.7; color: var(--muted); flex: 1; }
+.hot-more { color: var(--cyan); font-size: 12px; font-weight: 650; }
+.hot-more:hover { text-decoration: underline; }
+
+@media (max-width: 960px) {
+  .hot-grid { grid-template-columns: 1fr; }
+}
+
