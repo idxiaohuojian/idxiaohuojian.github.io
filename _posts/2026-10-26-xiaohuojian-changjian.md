@@ -4,7 +4,7 @@ title: 小火箭配置基础教程：Shadowrocket 初次使用
 permalink: /articles/xiaohuojian-changjian/
 description: 小火箭（Shadowrocket）初次安装与基础配置的完整步骤，适合新手快速上手。
 date: 2026-10-26
-image: /assets/css/style.css
+image: /assets/images/shadowrocket-2.webp
 tags: ["shadowrocket","小火箭","配置"]
 category: 使用教程
 ---

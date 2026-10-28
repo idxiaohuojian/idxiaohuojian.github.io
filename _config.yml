@@ -5,16 +5,27 @@ description: 小火箭（Shadowrocket）配置教程、账号选购与使用攻�
 lang: zh-CN
 markdown: kramdown
 permalink: /articles/:name/
+
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+
 defaults:
   - scope:
       path: ""
     values:
       layout: default
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      image: /assets/images/shadowrocket-1.webp
+
 exclude:
   - README.md
   - build_urls.py
   - submit_indexnow.py
   - .github/
+  - _config.local.yml
+  - Gemfile.lock

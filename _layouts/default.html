@@ -3,27 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#03343c">
+
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}/feed.xml">
-  <link rel="stylesheet" href="{{ site.url }}/assets/css/style.css">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  {% if page.image %}{% assign og_img = page.image | replace: '.webp', '-thumb.webp' %}<meta property="og:image" content="{{ site.url }}{{ og_img }}">{% endif %}
+  {% if page.layout == 'post' %}
+  <meta property="article:published_time" content="{{ page.date | date: '%Y-%m-%dT%H:%M:%S%z' }}">
+  <meta property="article:section" content="{{ page.category | default: '使用教程' }}">
+  {% endif %}
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  {% if page.image %}{% assign og_img = page.image | replace: '.webp', '-thumb.webp' %}<meta name="twitter:image" content="{{ site.url }}{{ og_img }}">{% endif %}
+
+  {% if page.layout == 'post' %}
+  <!-- 结构化数据：Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": {{ page.title | jsonify }},
+    "description": {{ page.description | jsonify }},
+    "datePublished": {{ page.date | date: '%Y-%m-%d' }},
+    "dateModified": {{ page.date | date: '%Y-%m-%d' }},
+    "author": { "@type": "Organization", "name": "{{ site.title }}", "url": "{{ site.url }}" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ site.title }}",
+      "logo": { "@type": "ImageObject", "url": "{{ site.url }}{% if page.image %}{{ page.image }}{% else %}/assets/images/shadowrocket-1.webp{% endif %}" }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ site.url }}{{ page.url }}" }
+  }
+  </script>
+  {% endif %}
+
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/style.css?v=20261028-citrus">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a href="{{ site.url }}/" class="site-title">🚀 {{ site.title }}</a>
-      <nav>
-        <a href="{{ site.url }}/">首页</a>
-        <a href="{{ site.url }}/articles/">文章</a>
-        <a href="{{ site.url }}/sitemap.xml">Sitemap</a>
+  <div class="citrus-scene" aria-hidden="true">
+    <div class="scene-ribbon ribbon-cyan"></div>
+    <div class="scene-ribbon ribbon-orange"></div>
+    <div class="scene-grid"></div>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="{{ site.url }}/" aria-label="{{ site.title }} 首页">
+      <span class="brand-logo" aria-hidden="true">🚀</span>
+      <span>i小火箭<span class="brand-divider">/</span><span class="brand-product">Shadowrocket 攻略</span></span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="{{ site.url }}/" {% if page.url == '/' %}class="active"{% endif %}>首页</a>
+      <a href="{{ site.url }}/articles/" {% if page.url contains '/articles/' %}class="active"{% endif %}>全部文章</a>
+      <a href="{{ site.url }}/categories/" {% if page.url contains '/categories' %}class="active"{% endif %}>分类</a>
+      <a href="{{ site.url }}/download-shadowrocket/">下载教程</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    {% if page.layout == 'post' %}
+    <nav class="breadcrumb" aria-label="面包屑">
+      <a href="{{ site.url }}/">首页</a> ›
+      <a href="{{ site.url }}/articles/">文章</a> ›
+      {% if page.category %}<a href="{% include cat_url.html cat=page.category %}">{{ page.category }}</a> ›{% endif %}
+      <span>{{ page.title | truncate: 24 }}</span>
+    </nav>
+    {% endif %}
+
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div>
+        <a class="brand" href="{{ site.url }}/">
+          <span class="brand-logo" aria-hidden="true">🚀</span>
+          <span>i小火箭 / 攻略</span>
+        </a>
+        <p>小火箭配置、账号与下载，写清楚再发。</p>
+        <p class="footer-note">本站与 Apple、Shadowrocket 官方均无合作关系，内容为独立整理。</p>
+      </div>
+      <nav aria-label="教程">
+        <a href="{{ site.url }}/download-shadowrocket/">下载指南</a>
+        <a href="{{ site.url }}/articles/">全部文章</a>
+        <a href="{{ site.url }}/categories/use-guide/">使用教程</a>
+        <a href="{{ site.url }}/categories/account/">账号选购</a>
+        <span>Shadowrocket · 小火箭</span>
+      </nav>
+      <nav aria-label="关于本站">
+        <a href="{{ site.url }}/articles/">小火箭使用教程</a>
+        <a href="{{ site.url }}/shared-account-review/">共享账号评估</a>
+        <a href="{{ site.url }}/shadowrocket-account-detail/">账号概念辨析</a>
+        <span>内容持续维护 · 欢迎纠错</span>
       </nav>
     </div>
-  </header>
-  <main class="container">{{ content }}</main>
-  <footer class="site-footer">
-    <div class="container">
-      <p>© {{ site.time | date: '%Y' }} {{ site.title }} · <a href="https://github.com/idxiaohuojian">idxiaohuojian</a></p>
+    <div class="footer-meta">
+      <span>© {{ site.time | date: '%Y' }} {{ site.title }}</span>
+      <a href="{{ site.url }}/articles/">查看全部文章</a>
     </div>
   </footer>
 </body>

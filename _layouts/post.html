@@ -1,10 +1,93 @@
 ---
 layout: default
 ---
-<article class="article">
-  <header>
+<article class="article-wrap">
+  <header class="article-header">
+    <div class="article-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y年%m月%d日' }}</time>
+      {% if page.category %}<span class="dot">·</span><a class="cat-tag" href="{% include cat_url.html cat=page.category %}">{{ page.category }}</a>{% endif %}
+      <span class="dot">·</span><span class="read-time">约 {{ page.content | strip_html | size | divided_by: 400 | plus: 1 }} 分钟</span>
+    </div>
     <h1>{{ page.title }}</h1>
-    <time>{{ page.date | date: '%Y-%m-%d' }}</time>
+    {% if page.description %}<p class="article-desc">{{ page.description }}</p>{% endif %}
   </header>
-  {{ content }}
+
+  {% assign has_toc = page.toc | default: true %}
+  {% if has_toc %}
+  <nav class="toc" aria-label="文章目录">
+    <p class="toc-title">本文目录</p>
+    <div class="toc-body" id="toc"></div>
+  </nav>
+  {% endif %}
+
+  <div class="article-body" id="article-body">
+    {{ content }}
+  </div>
+
+  {% if page.tags and page.tags.size > 0 %}
+  <footer class="article-tags">
+    <span class="tags-label">标签</span>
+    {% for tag in page.tags %}
+      <span class="tag">{{ tag }}</span>
+    {% endfor %}
+  </footer>
+  {% endif %}
 </article>
+
+{% comment %} 相关文章：同分类优先，最多 3 篇 {% endcomment %}
+{% assign related = site.posts | where: "category", page.category | where_exp: "p", "p.url != page.url" %}
+{% if related.size > 0 %}
+<aside class="related">
+  <h2>相关阅读</h2>
+  <div class="post-grid">
+    {% for post in related limit: 3 %}
+    <article class="post-card">
+      <a href="{{ post.url }}" class="card-img placeholder" aria-hidden="true">
+        {% case post.category %}
+        {% when '使用教程' %}📖{% when '账号选购' %}🔑{% when '下载安装' %}📥{% when '常见问题' %}❓{% else %}🚀{% endcase %}
+      </a>
+      <div class="card-body">
+        <time>{{ post.date | date: '%Y-%m-%d' }}</time>
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</aside>
+{% endif %}
+
+<nav class="post-pager">
+  {% if page.previous %}<a class="pager-prev" href="{{ page.previous.url }}"><span>上一篇</span>{{ page.previous.title | truncate: 28 }}</a>{% endif %}
+  {% if page.next %}<a class="pager-next" href="{{ page.next.url }}"><span>下一篇</span>{{ page.next.title | truncate: 28 }}</a>{% endif %}
+</nav>
+
+<script>
+(function () {
+  var body = document.getElementById('article-body');
+  var toc = document.getElementById('toc');
+  if (!body || !toc) return;
+  var heads = body.querySelectorAll('h2, h3');
+  if (!heads.length) { var box = toc.closest('.toc'); if (box) box.remove(); return; }
+  var ul = document.createElement('ol');
+  Array.prototype.forEach.call(heads, function (h, i) {
+    if (!h.id) h.id = 'h-' + (i + 1);
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'toc-h3' : 'toc-h2';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+  toc.appendChild(ul);
+  toc.addEventListener('click', function (e) {
+    var a = e.target.closest('a');
+    if (!a) return;
+    var el = document.querySelector(a.getAttribute('href'));
+    if (!el) return;
+    e.preventDefault();
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 72, behavior: 'smooth' });
+    history.replaceState(null, '', a.getAttribute('href'));
+  });
+})();
+</script>

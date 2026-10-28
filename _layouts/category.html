@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<section class="page-hero">
+  <p class="hero-kicker">分类</p>
+  <h1>{{ page.title }}</h1>
+  <p>{{ page.description | default: '该分类下的全部文章。' }}</p>
+</section>
+
+<div class="post-list">
+  {% assign cat_posts = site.posts | where: "category", page.title %}
+  {% for post in cat_posts %}
+  <article class="post-row">
+    <a href="{{ post.url }}" class="row-img placeholder" aria-hidden="true">
+      {% case post.category %}
+      {% when '使用教程' %}📖{% when '账号选购' %}🔑{% when '下载安装' %}📥{% when '常见问题' %}❓{% else %}🚀{% endcase %}
+    </a>
+    <div class="row-body">
+      <div class="row-meta">
+        <time>{{ post.date | date: '%Y-%m-%d' }}</time>
+      </div>
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <p>{{ post.description }}</p>
+    </div>
+  </article>
+  {% endfor %}
+</div>
