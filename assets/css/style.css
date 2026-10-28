@@ -563,3 +563,73 @@ ul, ol { padding-left: 1.2em; }
   .hot-grid { grid-template-columns: 1fr; }
 }
 
+
+
+/* ---------- 首页教程板块（步骤列表 / 兼容性 / 账号列表） ---------- */
+.steps-list { counter-reset: stepc; display: flex; flex-direction: column; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.steps-list li {
+  position: relative; counter-increment: stepc;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  padding: 16px 20px 16px 56px; font-size: 13px; line-height: 1.8; color: var(--muted);
+}
+.steps-list li::before {
+  content: counter(stepc);
+  position: absolute; left: 18px; top: 16px;
+  width: 24px; height: 24px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--deep-1); color: #fff8eb;
+  font-size: 12px; font-weight: 700;
+}
+.steps-list li strong { color: var(--ink); font-weight: 700; }
+.steps-list li code {
+  background: #eef7f4; color: #0b5f57; padding: 1px 6px; border-radius: 4px; font-size: 12px;
+}
+
+.compat-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 18px 0 4px; }
+.compat-item {
+  background: #f2fbf8; border: 1px solid #d3ece5; border-radius: 10px;
+  padding: 12px 10px; text-align: center;
+}
+.compat-item b { display: block; font-size: 12px; color: var(--ink); font-weight: 700; margin-bottom: 4px; }
+.compat-item span { font-size: 10px; color: #6d8b86; letter-spacing: .3px; }
+
+.warn-bar {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: #fff6ea; border: 1px solid #ffd9ac; border-radius: 12px;
+  padding: 14px 18px; margin: 16px 0 0; font-size: 12px; line-height: 1.8; color: #7a4a20;
+}
+.warn-bar b { color: #a24515; }
+.warn-bar i { font-style: normal; font-size: 15px; line-height: 1.5; }
+
+.acct-panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.acct-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  padding: 14px 20px; background: linear-gradient(115deg, #064f57, #0b7880); color: #eafdf7;
+}
+.acct-head .live { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.acct-head .live i { width: 7px; height: 7px; border-radius: 50%; background: #66e5bb; display: inline-block; }
+.acct-head span.meta { font-size: 11px; color: #abd0c8; }
+.acct-rows { display: flex; flex-direction: column; }
+.acct-row {
+  display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; align-items: center;
+  padding: 13px 20px; border-top: 1px solid #eef4f2; font-size: 12px;
+}
+.acct-row:first-child { border-top: 0; }
+.acct-row .idx { font-size: 11px; font-weight: 700; color: #8aa8a0; }
+.acct-row .what { color: var(--ink); font-weight: 650; }
+.acct-row .what small { display: block; font-weight: 400; color: var(--muted); font-size: 11px; margin-top: 2px; line-height: 1.6; }
+.acct-row .badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 99px; white-space: nowrap; }
+.badge.ok { color: #0b5f57; background: #ddf5ed; }
+
+@media (max-width: 960px) {
+  .compat-grid { grid-template-columns: repeat(3, 1fr); }
+  .acct-row { grid-template-columns: 44px 1fr; }
+  .acct-row .badge { grid-column: 2; justify-self: start; }
+}
+@media (max-width: 600px) {
+  .steps-list li { padding: 14px 16px 14px 48px; }
+  .steps-list li::before { left: 14px; top: 14px; width: 22px; height: 22px; }
+  .compat-grid { grid-template-columns: repeat(2, 1fr); }
+  .acct-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+

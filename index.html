@@ -148,30 +148,80 @@ description: 小火箭（Shadowrocket）配置教程、账号选购与使用攻�
   <p class="shop-note">账号为虚拟商品，一经发出不支持退换；共享账号请勿登录 iCloud，仅用于 App Store 下载。购买及售后问题请通过页面内客服联系。</p>
 </section>
 
-<section class="section hot-section" aria-labelledby="hot-title">
+<section class="section" aria-labelledby="sub-title">
   <div class="section-head">
-    <h2 id="hot-title">🔥 热门教程</h2>
-    <a href="{{ site.url }}/articles/" class="more-link">查看全部 →</a>
+    <h2 id="sub-title">🔗 小火箭添加订阅链接教程</h2>
+    <a href="{{ site.url }}/shadowrocket-subscribe-link/" class="more-link">详细版 →</a>
   </div>
-  <div class="hot-grid">
-    <article class="hot-card">
-      <span class="hot-kicker">SUBSCRIBE</span>
-      <h3><a href="{{ site.url }}/shadowrocket-subscribe-link/">小火箭订阅链接怎么添加</a></h3>
-      <p>从复制地址到拉取生效的四步流程，附订阅导入失败的五步排查顺序。</p>
-      <a href="{{ site.url }}/shadowrocket-subscribe-link/" class="hot-more">阅读教程 →</a>
-    </article>
-    <article class="hot-card">
-      <span class="hot-kicker">MACOS</span>
-      <h3><a href="{{ site.url }}/shadowrocket-macos/">Shadowrocket MacOS 教程</a></h3>
-      <p>M 系列芯片才能装、Intel 机型为什么不行，以及 App Store 里切到 iPhone 应用的关键一步。</p>
-      <a href="{{ site.url }}/shadowrocket-macos/" class="hot-more">阅读教程 →</a>
-    </article>
-    <article class="hot-card">
-      <span class="hot-kicker">SHARED LIST</span>
-      <h3><a href="{{ site.url }}/us-shadowrocket-shared-list/">美区共享账号列表怎么看</a></h3>
-      <p>列表页质量怎么判断、拿到账号三步验证，以及什么时候该放弃共享改用独享。</p>
-      <a href="{{ site.url }}/us-shadowrocket-shared-list/" class="hot-more">阅读教程 →</a>
-    </article>
+  <ol class="steps-list">
+    <li><strong>复制订阅地址</strong>：在服务商的用户中心找到「订阅链接」，整条复制。注意别只复制了前半段——长链接被聊天软件截断是最常见的导入失败原因。</li>
+    <li><strong>小火箭里新建订阅</strong>：打开 Shadowrocket，底部切到「首页」，点右上角 <code>+</code>，类型选 <code>Subscribe</code>，把地址粘进 URL 栏，备注写个能认出的名字，点「完成」。</li>
+    <li><strong>更新订阅拉取节点</strong>：点订阅右侧的「i」或左滑，选「更新」。拉取成功后分组下面会展开一串节点；没展开说明还没拉。 </li>
+    <li><strong>选节点连上验证</strong>：点一个节点，回首页打开顶部开关，首次会弹 VPN 配置授权。连上后打开浏览器实测一个网站，别只看开关亮没亮。</li>
+  </ol>
+  <div class="warn-bar">
+    <i>⚠️</i>
+    <div><b>更新失败先查这三点：</b>地址是否完整复制、复制到的是不是管理页面而不是订阅本身、设备时间是否准确（时间偏差大会导致 HTTPS 证书校验失败）。三条都对还是不行，再用浏览器直接打开订阅地址看返回什么。</div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="mac-title">
+  <div class="section-head">
+    <h2 id="mac-title">💻 Shadowrocket MacOS 教程</h2>
+    <a href="{{ site.url }}/shadowrocket-macos/" class="more-link">详细版 →</a>
+  </div>
+  <div class="compat-grid">
+    <div class="compat-item"><b>iPhone</b><span>iOS 13.0+</span></div>
+    <div class="compat-item"><b>iPad</b><span>iPadOS 13.0+</span></div>
+    <div class="compat-item"><b>Mac</b><span>macOS 10.15+</span></div>
+    <div class="compat-item"><b>Apple TV</b><span>tvOS 17.0+</span></div>
+    <div class="compat-item"><b>Vision</b><span>visionOS 1.0+</span></div>
+  </div>
+  <ol class="steps-list">
+    <li><strong>先确认芯片</strong>：点左上角苹果菜单 →「关于本机」，看芯片一栏。显示 <strong>Apple M1 / M2 / M3</strong> 才能装；显示 <strong>Intel Core</strong> 装不了，后面的步骤不适用。</li>
+    <li><strong>在 App Store 退出当前账号</strong>：打开 Mac 上的 App Store，点右上角头像，滑到底部选「退出登录」。目的是换成能下载 Shadowrocket 的美区账号。</li>
+    <li><strong>登录已购账号</strong>：用自己买过小火箭的美区 ID，或共享账号登录。若弹「保护账户升级」，点「其他选项」→「不升级」，共享账号通常过不了验证流程。</li>
+    <li><strong>搜索时切到 iPhone 应用</strong>：搜 <code>Shadowrocket</code> 后，把结果上方的筛选从「Mac App」切到 <code>iPhone 与 iPad App</code>。<strong>不切这一步就是搜不到</strong>，多数人卡在这里。</li>
+    <li><strong>下载后退出账号</strong>：装完回 App Store 头像处退出，换回自己的 Apple ID。共享账号挂越久，被风控的机会越大。</li>
+  </ol>
+</section>
+
+<section class="section" aria-labelledby="shared-title">
+  <div class="section-head">
+    <h2 id="shared-title">👤 美区小火箭共享账号列表</h2>
+    <a href="{{ site.url }}/us-shadowrocket-shared-list/" class="more-link">怎么挑选 →</a>
+  </div>
+  <div class="acct-panel">
+    <div class="acct-head">
+      <span class="live"><i></i> 列表质量判断 · 拿到手怎么验</span>
+      <span class="meta">公开共享账号随时可能被改密码或停用</span>
+    </div>
+    <div class="acct-rows">
+      <div class="acct-row">
+        <span class="idx">01</span>
+        <span class="what">是否标注「已购小火箭」<small>只有已购 Shadowrocket 的账号，登录后才能直接下载；空账号还要你自费 $2.99 购买。</small></span>
+        <span class="badge ok">必看</span>
+      </div>
+      <div class="acct-row">
+        <span class="idx">02</span>
+        <span class="what">检测时间精确到分钟<small>只写「已检测」「正常」而不说明检测了什么的列表，参考价值不高。</small></span>
+        <span class="badge ok">参考</span>
+      </div>
+      <div class="acct-row">
+        <span class="idx">03</span>
+        <span class="what">是否说明使用边界<small>靠谱的列表会写清：只在 App Store 登录、不要登 iCloud、下载完及时退出。</small></span>
+        <span class="badge ok">参考</span>
+      </div>
+      <div class="acct-row">
+        <span class="idx">04</span>
+        <span class="what">刷新后条目是否变化<small>页面写着今天检测、下面却是老账号，这个「实时更新」只是装饰。</small></span>
+        <span class="badge ok">识破</span>
+      </div>
+    </div>
+  </div>
+  <div class="warn-bar">
+    <i>🔒</i>
+    <div><b>一条红线：</b>共享账号只能登 <b>App Store</b>，不要登「系统设置 → 顶部头像」的 iCloud 入口。登进 iCloud 会与对方账号绑定设备，可能被远程锁定。下载完立刻退出。</div>
   </div>
 </section>
 
