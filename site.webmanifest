@@ -1,0 +1,13 @@
+{
+  "name": "i小火箭 · Shadowrocket 使用与账号攻略",
+  "short_name": "i小火箭",
+  "description": "小火箭（Shadowrocket）配置教程、账号选购与使用攻略的原创资讯站。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#03343c",
+  "theme_color": "#03343c",
+  "icons": [
+    { "src": "/assets/images/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/images/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
