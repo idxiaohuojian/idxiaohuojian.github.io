@@ -31,7 +31,7 @@
 
 ## 📌 关于本站
 
-https://idxiaohuojian.github.io/ 建立的原因很直接：关于"小火箭账号"这个主题，网上的信息分布太散了。一部分内容在讨论 App 本身怎么用，一部分在卖账号，一部分在讲 Apple ID 注册流程，还有的干脆是在互相打广告。一个真正想解决问题的人，往往要打开七八个标签页才能拼出一个完整答案。
+[本站](https://idxiaohuojian.github.io/) 建立的原因很直接：关于"小火箭账号"这个主题，网上的信息分布太散了。一部分内容在讨论 App 本身怎么用，一部分在卖账号，一部分在讲 Apple ID 注册流程，还有的干脆是在互相打广告。一个真正想解决问题的人，往往要打开七八个标签页才能拼出一个完整答案。
 
 本站想覆盖的就是这条完整路径上的关键环节：Shadowrocket 是什么、它为什么和 App Store 地区绑定、小火箭共享账号与小火箭独享账号的区别、"小火箭苹果 ID"这个习惯说法背后的真实含义，以及下载与安装过程中最常见的卡点。换句话说，这里整理的是"从想装到装好"的全过程，而不是单一环节的教程。
 
@@ -51,9 +51,9 @@ https://idxiaohuojian.github.io/ 建立的原因很直接：关于"小火箭账�
 
 **[Shadowrocket 共享账号与小火箭共享 ID](https://idxiaohuojian.github.io/shadowrocket-account-detail/)** —— 这两个词经常被混着用，但实际指向的东西不一样，搞混了容易走弯路。
 
-**小火箭独享账号** —— 准备长期使用、不想依赖他人账号的人关注的方向。
+[小火箭独享账号](#-小火箭独享账号) —— 准备长期使用、不想依赖他人账号的人关注的方向。
 
-**Apple 美区 ID** —— 关心 App Store 地区与账户注册流程的人。
+[Apple 美区 ID](#-apple-美区-id) —— 关心 App Store 地区与账户注册流程的人。
 
 这几个主题在后续章节里会逐一说透，先放这里方便直接跳转。更多文章见 [全部文章列表](https://idxiaohuojian.github.io/articles/)。
 
@@ -213,7 +213,7 @@ Apple 美区 ID 是注册地区为美国的 Apple 账户，支持访问美国 Ap
 
 应用装好之后，节点配置也要谨慎。不要使用来源不明的节点，如果你在使用中遇到连接异常，先检查 Apple ID 状态、设备网络、应用版本，再考虑换节点或账号。长期使用建议定期检查 Apple ID 的登录历史和安全通知，确认没有未知设备访问。
 
-关于"小火箭账号推荐""小火箭账号平台"这类搜索，很多结果指向第三方平台或非官方渠道。优先参考官方 App Store、Apple 官方支持文档，以及经过验证的内容站（如本站 https://idxiaohuojian.github.io/）。想了解更多 Shadowrocket 使用细节，可以直接访问站内文章列表，或通过搜索定位对应教程。
+关于"小火箭账号推荐""小火箭账号平台"这类搜索，很多结果指向第三方平台或非官方渠道。优先参考官方 App Store、Apple 官方支持文档，以及经过验证的内容站（如本站 [idxiaohuojian.github.io](https://idxiaohuojian.github.io/)）。想了解更多 Shadowrocket 使用细节，可以直接访问站内文章列表，或通过搜索定位对应教程。
 
 ---
 
@@ -311,7 +311,7 @@ Apple 美区 ID 是注册地区为美国的 Apple 账户，支持访问美国 Ap
 核心用途是通过 App Store 下载 Shadowrocket 应用。应用装好后，节点配置和使用是另一回事，账号本身不提供代理服务。
 
 **Q20. 小火箭账号网站推荐哪里？**
-优先参考经过验证的内容站和官方文档。本站 https://idxiaohuojian.github.io/ 涵盖账号选择、下载教程、安全提醒与常见问题，适合系统阅读。
+优先参考经过验证的内容站和官方文档。本站 [idxiaohuojian.github.io](https://idxiaohuojian.github.io/) 涵盖账号选择、下载教程、安全提醒与常见问题，适合系统阅读。
 
 **Q21. Shadowrocket 下载教程适合新手吗？**
 适合。教程按步骤拆解，涵盖前置条件（Apple ID）、下载操作、安装授权、首次配置，避免直接跳到复杂节点设置。
@@ -365,4 +365,4 @@ Apple 美区 ID 是注册地区为美国的 Apple 账户，支持访问美国 Ap
 
 Apple ID 这块，记住三件事：美区 ID 是账户类型，小火箭苹果 ID 是使用场景描述；不要把主账户交给陌生人；美区 ID 和主 ID 分开管理。
 
-最后，本站 https://idxiaohuojian.github.io/ 与 Apple、Shadowrocket 官方均无合作关系，内容独立整理，账号安全建议仅供参考，具体操作请自行评估风险。更多专题和后续文章，可以访问 [全部文章列表](https://idxiaohuojian.github.io/articles/) 浏览，也可以回到 [小火箭账号首页](https://idxiaohuojian.github.io/) 重新导航。把 Shadowrocket 从"想装"到"稳定用"的路走通，关键不在找到某个神奇渠道，而在于搞清楚每个环节到底在解决什么问题。
+最后，本站 [idxiaohuojian.github.io](https://idxiaohuojian.github.io/) 与 Apple、Shadowrocket 官方均无合作关系，内容独立整理，账号安全建议仅供参考，具体操作请自行评估风险。更多专题和后续文章，可以访问 [全部文章列表](https://idxiaohuojian.github.io/articles/) 浏览，也可以回到 [小火箭账号首页](https://idxiaohuojian.github.io/) 重新导航。把 Shadowrocket 从"想装"到"稳定用"的路走通，关键不在找到某个神奇渠道，而在于搞清楚每个环节到底在解决什么问题。
