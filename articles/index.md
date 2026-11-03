@@ -11,7 +11,7 @@ description: i小火箭 · Shadowrocket 使用与账号攻略全部文章
 </section>
 
 <div class="post-list">
-  {% assign latest = site.posts | reverse %}
+  {% assign latest = site.posts %}
   {% for post in latest %}
   <article class="post-row">
     {% if post.image %}

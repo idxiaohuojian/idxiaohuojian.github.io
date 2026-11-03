@@ -92,7 +92,7 @@ description: 小火箭（Shadowrocket）配置教程、账号选购与使用攻�
     <a href="{{ site.url }}/articles/" class="more-link">全部文章 →</a>
   </div>
   <div class="post-grid">
-    {% assign latest = site.posts | reverse %}
+    {% assign latest = site.posts %}
     {% for post in latest limit: 6 %}
     <article class="post-card">
       <a href="{{ post.url }}" class="card-img placeholder" aria-hidden="true">
