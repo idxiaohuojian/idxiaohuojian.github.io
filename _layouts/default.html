@@ -7,6 +7,7 @@
 
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}/feed.xml">
 
@@ -76,6 +77,7 @@
     </a>
     <nav class="nav" aria-label="主导航">
       <a href="{{ site.url }}/" {% if page.url == '/' %}class="active"{% endif %}>首页</a>
+      <a href="{{ site.url }}/xiaohuojian-account/" {% if page.url contains '/xiaohuojian-account' %}class="active"{% endif %}>账号专题</a>
       <a href="{{ site.url }}/articles/" {% if page.url contains '/articles/' %}class="active"{% endif %}>全部文章</a>
       <a href="{{ site.url }}/categories/" {% if page.url contains '/categories' %}class="active"{% endif %}>分类</a>
       <a href="{{ site.url }}/download-shadowrocket/">下载教程</a>
