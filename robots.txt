@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
+Allow: /favicon.ico
+Allow: /icon-32.png
+Allow: /icon-192.png
+Allow: /apple-touch-icon.png
+Allow: /site.webmanifest
+Allow: /assets/images/favicon.ico
+Allow: /assets/images/icon-32.png
+Allow: /assets/images/icon-192.png
+Allow: /assets/images/icon-512.png
+Allow: /assets/images/apple-touch-icon.png
 
 Sitemap: https://idxiaohuojian.github.io/sitemap.xml
